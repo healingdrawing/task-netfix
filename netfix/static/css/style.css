@@ -1,4 +1,14 @@
 body {
   background: black;
-  color: hsl(0, 0%, 80%);
+  color: hsl(120, 20%, 50%);
+}
+
+a:link,
+a:visited {
+  color: hsl(120, 20%, 50%);
+}
+
+a:hover,
+a:active {
+  color: hsl(120, 20%, 60%);
 }
