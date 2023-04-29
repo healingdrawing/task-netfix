@@ -1,14 +1,20 @@
 body {
+  background: hsl(240, 10%, 20%);
+  color: hsl(120, 20%, 60%);
+}
+
+hr {
+  border-color: hsl(120, 20%, 60%);
+  height: 2px;
   background: black;
-  color: hsl(120, 20%, 50%);
 }
 
 a:link,
 a:visited {
-  color: hsl(120, 20%, 50%);
+  color: hsl(180, 20%, 50%);
 }
 
 a:hover,
 a:active {
-  color: hsl(120, 20%, 60%);
+  color: hsl(180, 20%, 60%);
 }
