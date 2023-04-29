@@ -1,3 +1,7 @@
 {% extends 'index.html' %} {% block content %}
 <h1>Register new customer:</h1>
-{% endblock %}
+<form action="/register_customer/" method="POST">
+  {% csrf_token %} {{form.as_p}}
+  <input type="submit" value="Register" />
+  {% endblock %}
+</form>

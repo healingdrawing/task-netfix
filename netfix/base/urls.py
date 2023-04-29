@@ -3,8 +3,11 @@ from django.urls import path
 
 
 urlpatterns = [
-    path('', views.home, name="home"),
-    path('register/', views.register, name="register"),
+    path('', views.home_view, name="home"),
+    path('register/', views.register_view, name="register"),
     path('register_customer/', views.register_customer, name="register_customer"),
     path('register_company/', views.register_company, name="register_company"),
+    path('login/', views.login_view, name="login"),
+    # TODO: move services to separate app later
+    path('services/', views.services_view, name="services"),
 ]
