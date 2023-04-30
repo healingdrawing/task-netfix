@@ -8,6 +8,7 @@ urlpatterns = [
     path('register_customer/', views.register_customer, name="register_customer"),
     path('register_company/', views.register_company, name="register_company"),
     path('login/', views.login_view, name="login"),
+    path('logout/', views.logout_view, name="logout"),
     # TODO: move services to separate app later
     path('services/', views.services_view, name="services"),
 ]
