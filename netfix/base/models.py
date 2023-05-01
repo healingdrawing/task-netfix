@@ -20,7 +20,7 @@ ACTIVITY_CHOICES = [
     ('PLUMBING', 'Plumbing'),
     ('WATER_HEATERS', 'Water Heaters'),
 ]
-"""CUSTOMER used is default, and means it is not a company, just to use one user implementation"""
+"""CUSTOMER used default, and means it is not a company, just to use one user implementation"""
 
 
 class Kastrat(AbstractUser):

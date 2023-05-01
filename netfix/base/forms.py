@@ -18,7 +18,7 @@ ACTIVITY_CHOICES_FORM = [
     ('PLUMBING', 'Plumbing'),
     ('WATER_HEATERS', 'Water Heaters'),
 ]
-"""have no CUSTOMER , ALL_IN_ONE used is default"""
+"""have no CUSTOMER , ALL_IN_ONE used default"""
 
 
 class CompanyCreationForm(UserCreationForm):
