@@ -1,7 +1,26 @@
+import datetime
 from django.db import models
 
 # Create your models here.
 from django.contrib.auth.models import AbstractUser
+
+
+ACTIVITY_CHOICES = [
+    ('CUSTOMER', 'Customer'),
+    ('AIR_CONDITIONER', 'Air Conditioner'),
+    ('ALL_IN_ONE', 'All in One'),
+    ('CARPENTRY', 'Carpentry'),
+    ('ELECTRICITY', 'Electricity'),
+    ('GARDENING', 'Gardening'),
+    ('HOME_MACHINES', 'Home Machines'),
+    ('HOUSEKEEPING', 'Housekeeping'),
+    ('INTERIOR_DESIGN', 'Interior Design'),
+    ('LOCKS', 'Locks'),
+    ('PAINTING', 'Painting'),
+    ('PLUMBING', 'Plumbing'),
+    ('WATER_HEATERS', 'Water Heaters'),
+]
+"""CUSTOMER used is default, and means it is not a company, just to use one user implementation"""
 
 
 class Kastrat(AbstractUser):
@@ -10,7 +29,10 @@ class Kastrat(AbstractUser):
     user_permissions = None
     username = models.CharField(max_length=50, unique=True)
     email = models.EmailField(max_length=254, unique=True)
-    date_of_birth = models.DateField(null=False, blank=False)
+    field_of_work = models.CharField(
+        max_length=50, choices=ACTIVITY_CHOICES, default='CUSTOMER')
+    date_of_birth = models.DateField(
+        null=False, blank=False, default=datetime.date.today)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
