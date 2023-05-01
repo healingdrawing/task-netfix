@@ -32,7 +32,7 @@ class Kastrat(AbstractUser):
     field_of_work = models.CharField(
         max_length=50, choices=ACTIVITY_CHOICES, default='CUSTOMER')
     date_of_birth = models.DateField(
-        null=False, blank=False, default=datetime.date.today)
+        null=False, blank=False, default=datetime.date.today())
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
