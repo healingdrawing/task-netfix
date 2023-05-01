@@ -1,7 +1,7 @@
 from django.contrib import messages
 from django.forms import ValidationError
 from django.shortcuts import render
-from base.forms import CustomerCreationForm, UserLoginForm
+from base.forms import CompanyCreationForm, CustomerCreationForm, UserLoginForm
 from django.contrib.auth import authenticate, login, logout
 from base.models import Kastrat
 
@@ -33,7 +33,19 @@ def register_customer(request):
 
 
 def register_company(request):
-    return render(request, 'register_company.html')
+    if request.method == 'POST':
+        form = CompanyCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.username = user.username
+            user.email = user.email.lower()
+            user.save()
+            # TODO: redirect to login page
+            return render(request, 'login.html', {'form': UserLoginForm()})
+    else:
+        form = CompanyCreationForm()
+
+    return render(request, 'register_company.html', {'form': form})
 
 
 def login_view(request):
