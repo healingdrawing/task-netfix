@@ -1,8 +1,8 @@
-import datetime
 from django.db import models
+from django.utils import timezone
+from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
-from django.contrib.auth.models import AbstractUser
 
 
 ACTIVITY_CHOICES = [
@@ -32,7 +32,7 @@ class Kastrat(AbstractUser):
     field_of_work = models.CharField(
         max_length=50, choices=ACTIVITY_CHOICES, default='CUSTOMER')
     date_of_birth = models.DateField(
-        null=False, blank=False, default=datetime.date.today())
+        null=False, blank=False, default=timezone.now)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
