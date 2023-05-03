@@ -1,0 +1,22 @@
+{% extends 'index.html' %} {% block content %}
+<h1>Profile Page</h1>
+<p>Hi {{ user.username }}!</p>
+<p>Email: {{ user.email }}</p>
+<p>Activity: {{ user.field_of_work }}</p>
+<p>Date: {{ user.date_of_birth }}</p>
+<hr>
+
+{% if user.field_of_work == "CUSTOMER" %}
+
+<input type="submit" value="Book a service" />
+<hr>
+<h2>Booked services:</h2>
+
+{% else %}
+
+<input type="submit" value="Add a service" />
+<hr>
+<h2>Created services:</h2>
+
+{% endif %}
+{% endblock %}
