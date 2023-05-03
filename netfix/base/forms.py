@@ -31,6 +31,10 @@ class CompanyCreationForm(UserCreationForm):
         fields = ('username', 'email', 'field_of_work',
                   'password1', 'password2')
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['username'].widget.attrs.update({'autofocus': 'autofocus'})
+
     def clean_username(self):
         username = self.cleaned_data['username']
         if Kastrat.objects.filter(username=username).exists():
