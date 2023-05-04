@@ -8,13 +8,19 @@
 
 {% if user.field_of_work == "CUSTOMER" %}
 
+<form action="{% url 'book_service' %}" method="post">
+  {% csrf_token %}
 <input type="submit" value="Book a service" />
+</form>
 <hr>
 <h2>Booked services:</h2>
 
 {% else %}
 
+<form action="{% url 'add_service' %}" method="post">
+  {% csrf_token %}
 <input type="submit" value="Add a service" />
+</form>
 <hr>
 <h2>Created services:</h2>
 
