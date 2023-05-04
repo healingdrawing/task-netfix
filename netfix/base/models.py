@@ -43,7 +43,7 @@ class Kastrat(AbstractUser):
     def __str__(self):
         return self.email
 
-# need prevent conflict with django.contrib.auth.models.User, it works but names of fields are not the same. And i do not need this functionality at the moment. So version above just remove conflicting fields groups and user_permissions. Also the name was changed to CustomUser, to not harm the original User model, used by admin panel.
+# need prevent conflict with django.contrib.auth.models.User, it works but names of fields are not the same. And i do not need this functionality at the moment. So version above just remove conflicting fields groups and user_permissions. Also the name may be changed to CustomUser, to not harm the original User model, used by admin panel.
 # class User(AbstractUser):
 #     username = models.CharField(max_length=50, unique=True)
 #     email = models.EmailField(max_length=254, unique=True)
