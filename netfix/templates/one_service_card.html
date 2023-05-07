@@ -1,0 +1,6 @@
+{% comment %} the item is service {% endcomment %}
+<h2>{{ item.name }}</h2>
+<h3>{{ item.description }}</h3>
+<h3>{{ item.price_per_hour }}</h3>
+<h3>{{ item.field }}</h3>
+<a href="{% url 'one_service' item.id %}">View Details</a>

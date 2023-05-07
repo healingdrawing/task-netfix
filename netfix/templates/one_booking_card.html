@@ -1,0 +1,7 @@
+{% comment %} the item is booking {% endcomment %}
+<p>{{ item.service.name }}</p>
+<p>{{ item.price }}</p>
+<p>{{ item.booking_date }}</p>
+<p>{{ item.service.field }}</p>
+<p>{{ item.service.company_username }}</p>
+<a href="{% url 'one_service' item.service.id %}">View Details</a>

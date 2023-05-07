@@ -2,9 +2,7 @@ from django.shortcuts import render
 
 # Create your views here.
 from django.shortcuts import render, redirect
-from bookings.forms import BookingForm
-
-# from bookings.forms import BookingForm
+from django.urls import reverse
 from service.models import Service
 from .forms import ServiceForm
 
@@ -20,7 +18,10 @@ def add_service(request):
             else:
                 service.field = form.cleaned_data['field']
             service.save()
-            return render(request, 'profile.html', {'user': request.user})
+            # no need send any data f.e. {'user': request.user, 'history': history}
+            # because it calls profile view, instead of just rendering profile.html
+            # but you can send data , like second redirect argument in curve brackets
+            return redirect(reverse('profile'))
     else:
         form = ServiceForm(user=request.user)
     return render(request, 'add_service.html', {'form': form})
@@ -35,5 +36,5 @@ def service_view(request, service_id):
 
 
 def service_list_view(request):
-    services = Service.objects.all()
+    services = Service.objects.filter().order_by('-created_date')
     return render(request, 'services.html', {'services': services})

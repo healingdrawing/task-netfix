@@ -1,10 +1,11 @@
 from decimal import Decimal
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 
 # Create your views here.
 
 
 from django.shortcuts import render
+from django.urls import reverse
 from bookings.models import Bookings
 
 from service.models import Service
@@ -21,8 +22,10 @@ def booking_view(request, service_id):
             booking.user = request.user  # or however you're setting the user
             booking.price = service.price_per_hour * int(request.POST['hours'])
             booking.save()
-            # todo: also need generate list of bookings later, because redirect loosing data
-            return render(request, 'profile.html', {'user': request.user})
+            # no need send any data f.e. {'user': request.user, 'history': history}
+            # because it calls profile view, instead of just rendering profile.html
+            # but you can send data , like second redirect argument in curve brackets
+            return redirect(reverse('profile'))
     else:
         form = BookingForm(instance=Bookings(service=service))
     return render(request, 'book_service.html', {'form': form, 'service': service})

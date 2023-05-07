@@ -9,6 +9,11 @@
 {% if user.field_of_work == "CUSTOMER" %}
 
 <h2>Booked services:</h2>
+<hr>
+
+{% for item in history %}
+{% include 'one_booking_card.html' %}
+{% endfor %}
 
 {% else %}
 
@@ -18,6 +23,10 @@
 </form>
 <hr>
 <h2>Created services:</h2>
+
+{% for item in history %}
+{% include 'one_service_card.html' %}
+{% endfor %}
 
 {% endif %}
 {% endblock %}
