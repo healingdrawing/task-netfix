@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     "base",
     "userpage",
     "service",
+    "bookings",
 ]
 
 MIDDLEWARE = [

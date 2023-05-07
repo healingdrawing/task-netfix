@@ -1,0 +1,12 @@
+{% extends 'index.html' %} {% block content %}
+<h1>One Service Page</h1>
+<h2>{{ service.name }}</h2>
+<h3>{{ service.description }}</h3>
+<h3>{{ service.price_per_hour }}</h3>
+<h3>{{ service.field }}</h3>
+
+<form action="{% url 'book_service' service_id=service.id %}" method="post">
+  {% csrf_token %}
+    <input type="submit" value="Book">
+</form>
+{% endblock %}
