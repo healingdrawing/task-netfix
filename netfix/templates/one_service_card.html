@@ -1,6 +1,10 @@
 {% comment %} the item is service {% endcomment %}
-<h2>{{ item.name }}</h2>
-<h3>{{ item.description }}</h3>
-<h3>{{ item.price_per_hour }}</h3>
-<h3>{{ item.field }}</h3>
+<hr>
+<h3>company: <a href="{% url 'public_profile' item.company_username.username %}">{{ item.company_username.username }} </a> </h3>
+<h3>field of work: {{ item.company_username.field_of_work }}</h3>
+<h2>service: {{ item.name }}</h2>
+<h3>field: {{ item.field }}</h3>
+<h3>description: {{ item.description }}</h3>
+<h3>price(goldens per hour): {{ item.price_per_hour }}</h3>
 <a href="{% url 'one_service' item.id %}">View Details</a>
+<hr>

@@ -31,7 +31,7 @@ def add_service(request):
 
 def service_view(request, service_id):
     service = Service.objects.get(id=service_id)
-    context = {'service': service}
+    context = {'service': service, 'user': request.user}
     return render(request, 'one_service.html', context)
 
 

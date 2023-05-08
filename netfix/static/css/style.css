@@ -18,3 +18,37 @@ a:hover,
 a:active {
   color: hsl(180, 20%, 60%);
 }
+
+input[type="submit"],
+input[type="button"],
+button[type="submit"] {
+  color: black;
+  background-color: hsl(120, 20%, 60%);
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+  outline: none; /*keep rounded corners on press*/
+}
+
+input[type="submit"]:hover,
+input[type="button"]:hover,
+button[type="submit"]:hover {
+  background-color: hsl(180, 20%, 60%); /* hover background color */
+}
+
+input,
+select,
+textarea {
+  background-color: hsl(180, 20%, 60%);
+  border: 2px solid black;
+  padding: 12px;
+  border-radius: 10px;
+  outline: none;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  background-color: rgb(210, 210, 210);
+}
