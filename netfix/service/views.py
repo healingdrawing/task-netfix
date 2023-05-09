@@ -6,6 +6,7 @@ from django.urls import reverse
 from base.views import convert_services_choices_to_verbose_names
 from service.models import Service
 from .forms import ServiceForm
+from django.db.models import Count, Max
 
 
 def add_service(request):
@@ -38,6 +39,10 @@ def service_view(request, service_id):
 
 def service_list_view(request):
     # todo: remaster to list of services by number of bookings
-    services = Service.objects.filter().order_by('-created_date')
+    # services = Service.objects.filter().order_by('-created_date')
+    services = Service.objects.annotate(
+        num_bookings=Count('bookings'),
+        latest_booking_date=Max('bookings__booking_date')
+    ).order_by('-num_bookings', '-latest_booking_date')
     convert_services_choices_to_verbose_names(services)
     return render(request, 'services.html', {'services': services})
