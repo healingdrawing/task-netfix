@@ -1,12 +1,14 @@
 {% extends 'index.html' %} {% block content %}
 <h1>Services Page</h1>
 {% for service in services %}
-<hr>
-    <h2>service: {{ service.name }}</h2>
-    <h3>description: {{ service.description }}</h3>
-    <h3>price(goldens per hour): {{ service.price_per_hour }}</h3>
+
+<div class="card">
+    <p>service: {{ service.name }}</p>
+    <p>description: {{ service.description }}</p>
+    <p>price(goldens per hour): {{ service.price_per_hour }}</p>
+    <p>field: {{ service.field }}</p>
     <a href="{% url 'one_service' service.id %}">View Details</a>
-<hr>
+</div>
 
 {% endfor %}
 

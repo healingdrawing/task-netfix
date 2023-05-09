@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from base.models import Kastrat
+from base.views import convert_bookings_choices_to_verbose_names, convert_services_choices_to_verbose_names, convert_one_choice_to_verbose_name
 
 from bookings.models import Bookings
 from service.models import Service
@@ -12,9 +13,13 @@ def profile(request):
     if request.user.field_of_work == 'CUSTOMER':
         history = Bookings.objects.filter(
             user=request.user).order_by('-booking_date')
+        convert_bookings_choices_to_verbose_names(history)
     else:
         history = Service.objects.filter(
             company_username=request.user).order_by('-created_date')
+        convert_services_choices_to_verbose_names(history)
+    request.user.field_of_work = convert_one_choice_to_verbose_name(
+        request.user.field_of_work)
     context = {
         'user': request.user,
         'history': history,
@@ -24,6 +29,7 @@ def profile(request):
 
 def public_profile(request, username):
     user = Kastrat.objects.get(username=username)
+    user.field_of_work = convert_one_choice_to_verbose_name(user.field_of_work)
     history = None
     if user.field_of_work == 'CUSTOMER':
         history = Bookings.objects.filter(
@@ -31,6 +37,7 @@ def public_profile(request, username):
     else:
         history = Service.objects.filter(
             company_username=user).order_by('-created_date')
+        convert_services_choices_to_verbose_names(history)
     context = {
         # to manage navbar.html properly
         'user': request.user,

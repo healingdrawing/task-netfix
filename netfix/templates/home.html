@@ -1,0 +1,20 @@
+{% extends 'index.html' %} {% block content %}
+Services filtered by field and date of creation.
+<hr>
+{% for field, verbose in field_verbose_dict.items %}
+<div class="filter">
+<a href="{% url 'home_with_filter' field %}"> {{ verbose }} </a>
+</div>
+{% endfor %}
+
+
+<hr>
+{% for item in services %}
+
+{% include 'one_service_card.html' %}
+
+{% endfor %}
+
+
+
+{% endblock %}

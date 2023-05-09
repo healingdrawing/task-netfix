@@ -1,10 +1,12 @@
 {% comment %} the item is service {% endcomment %}
+<div class="card">
+<p>company: <a href="{% url 'public_profile' item.company_username.username %}">{{ item.company_username.username }} </a> </p>
+<p>field of work: {{ item.company_username.field_of_work }}</p>
 <hr>
-<h3>company: <a href="{% url 'public_profile' item.company_username.username %}">{{ item.company_username.username }} </a> </h3>
-<h3>field of work: {{ item.company_username.field_of_work }}</h3>
-<h2>service: {{ item.name }}</h2>
-<h3>field: {{ item.field }}</h3>
-<h3>description: {{ item.description }}</h3>
-<h3>price(goldens per hour): {{ item.price_per_hour }}</h3>
+<p>service: {{ item.name }}</p>
+<p>field: {{ item.field }}</p>
+<p>description: {{ item.description }}</p>
+<p>price(goldens per hour): {{ item.price_per_hour }}</p>
+<p>date of creation: {{ item.created_date }}</p>
 <a href="{% url 'one_service' item.id %}">View Details</a>
-<hr>
+</div>

@@ -1,9 +1,17 @@
 {% extends 'index.html' %} {% block content %}
 <h1>Profile Page</h1>
-<p>Hi {{ user.username }}!</p>
+{% if user.field_of_work == 'CUSTOMER' %}
+<p>Name: {{ user.username }}</p>
 <p>Email: {{ user.email }}</p>
 <p>Activity: {{ user.field_of_work }}</p>
-<p>Date: {{ user.date_of_birth }}</p>
+<p>Date of birth: {{ user.date_of_birth }}</p>
+{% else %}
+<p>Company: {{ user.username }}</p>
+<p>Email: {{ user.email }}</p>
+<p>Activity: {{ user.field_of_work }}</p>
+<p>Date of registration: {{ user.date_of_birth }}</p>
+{% endif %}
+
 <hr>
 
 {% if user.field_of_work == "CUSTOMER" %}
