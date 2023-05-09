@@ -6,8 +6,8 @@ from base.models import ACTIVITY_CHOICES, Kastrat
 
 
 class Service(models.Model):
-    name = models.CharField(max_length=50)
-    description = models.TextField()
+    name = models.CharField(max_length=254)
+    description = models.TextField(max_length=500)
     field = models.CharField(
         max_length=50,
         choices=[

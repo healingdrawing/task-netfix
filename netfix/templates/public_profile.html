@@ -1,6 +1,6 @@
 {% extends 'index.html' %} {% block content %}
 <h1>Public Profile Page</h1>
-<p>Company: {{ public_user.username }}</p>
+<p>Company: {{ public_user.username|slice:":98"|truncatechars:100 }}</p>
 <p>Email: {{ public_user.email }}</p>
 <p>Activity: {{ public_user.field_of_work }}</p>
 <p>Date: {{ public_user.date_of_birth }}</p>

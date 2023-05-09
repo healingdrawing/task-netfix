@@ -11,7 +11,7 @@ from datetime import datetime
 class Bookings(models.Model):
     service = models.ForeignKey(Service, on_delete=models.CASCADE)
     user = models.ForeignKey(Kastrat, on_delete=models.CASCADE)
-    address = models.TextField(null=False)
+    address = models.TextField(max_length=300, null=False)
     booking_date = models.DateTimeField(default=datetime.now, null=False)
     price = models.DecimalField(
         max_digits=8, decimal_places=2)  # service.price_per_hour * hours
