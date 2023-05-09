@@ -67,6 +67,10 @@ class CustomerCreationForm(UserCreationForm):
         fields = ('username', 'email', 'date_of_birth',
                   'password1', 'password2')
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['username'].widget.attrs.update({'autofocus': 'autofocus'})
+
     def clean_username(self):
         username = self.cleaned_data['username']
         if Kastrat.objects.filter(username=username).exists():
@@ -97,3 +101,7 @@ class UserLoginForm(forms.Form):
     class Meta:
         model = Kastrat
         fields = ('email', 'password')
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['email'].widget.attrs.update({'autofocus': 'autofocus'})

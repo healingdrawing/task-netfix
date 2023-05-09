@@ -10,9 +10,6 @@ class BookingForm(forms.ModelForm):
         model = Bookings
         fields = ['address', 'hours']
 
-    def clean(self):
-        cleaned_data = super().clean()
-        hours = cleaned_data.get('hours')
-        # if not hours:
-        #     raise forms.ValidationError('Hours is required.')
-        return cleaned_data
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['address'].widget.attrs.update({'autofocus': 'autofocus'})
