@@ -9,7 +9,7 @@ https://01.gritlab.ax/git/root/public/src/branch/master/subjects/netfix#netfix
 After some manipulations, project template from "professionals" became able to show some pages.  
 Few hours later was decided to drop this shit into the trash, and recreate project, because of:
 
-- masterpiece design based eye bleeding (red/yellow/gray palette, the hummer and spanner on logo for web application with "cleaning" or "gardening" services)
+- masterpiece design based eye bleeding (red/yellow/gray palette, the hummer and spanner on logo for web application with "painting" or "gardening" services)
 - usage of three classes(the built-in `User`, and two extended) to manage users, when it enough to use just one extended from `AbstractUser` (admin is not required, so it also the reason to cut some not safe, methods)
 - synthetically generated "errors", which can happens naturally only under the heavy drugs, which also can raise some thinks 🤔
 
