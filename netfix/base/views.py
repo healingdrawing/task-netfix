@@ -23,9 +23,9 @@ FILTER_CHOICES = [
     ('PLUMBING', 'Plumbing'),
     ('WATER_HEATERS', 'Water Heaters'),
 ]
-"""to generate links to filter services by field of work"""
 
 FILTER_CHOICES_DICT = dict(FILTER_CHOICES)
+"""to generate links to filter services by field of work"""
 
 
 def convert_one_choice_to_verbose_name(choice):
@@ -54,8 +54,11 @@ def convert_bookings_choices_to_verbose_names(bookings):
 
 def home_view(request, service_field='ALL_IN_ONE'):
     if service_field not in FILTER_CHOICES_DICT or service_field == 'ALL_IN_ONE':
+        # collect from database all services records, and sort them descending by date of creation
         services = Service.objects.all().order_by('-created_date')
     else:
+        # collect from database only services records with field of work equal to service_field,
+        # and sort them descending by date of creation
         services = Service.objects.filter(
             field=service_field).order_by('-created_date')
     convert_services_choices_to_verbose_names(services)
@@ -73,16 +76,22 @@ def register_view(request):
 
 def register_customer(request):
     if request.method == 'POST':
+        # create form with data from POST request
+        # the field names in the request.POST must be the same as in the CustomerCreationForm.
+        # The form in request was generated from the model, so the field names are as required.
         form = CustomerCreationForm(request.POST)
+        # if validation will fail, the form errors will be raised and displayed in the form
         if form.is_valid():
             user = form.save(commit=False)
             user.username = user.username
             user.email = user.email.lower()
             user.save()
+            # render login page with empty form. The form created as context variable,
+            # and used in login.html to fill the template properly
             return render(request, 'login.html', {'form': UserLoginForm()})
     else:
         form = CustomerCreationForm()
-
+    # if customer is not registered, render register_customer.html
     return render(request, 'register_customer.html', {'form': form})
 
 
@@ -103,11 +112,15 @@ def register_company(request):
 
 def login_view(request):
     form = UserLoginForm()
+    # if user is authenticated, redirect to home page.
+    # Generally it is not needed, because login link is not available for authenticated users,
+    # but it is possible to try call login page directly from browser, so just for emergency case
     if request.user.is_authenticated:
-        return render(request, 'index.html')
+        return redirect(reverse('home'))
     if request.method == 'POST':
         form = UserLoginForm(request.POST)
         if form.is_valid():
+            # to avoid case sensitive email. With .lower() the case is ignored
             email = form.cleaned_data['email'].lower()
             password = form.cleaned_data['password']
             try:

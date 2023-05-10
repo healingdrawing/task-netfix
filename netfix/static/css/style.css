@@ -62,9 +62,5 @@ textarea:focus {
 
 .filter {
   display: inline-block;
-  /* border: 2px solid hsl(120, 20%, 60%); */
-  /* border-radius: 10px; */
   padding: 10px;
-  /* margin-top: 10px; */
-  /* background-color: hsl(180, 20%, 60%); */
 }

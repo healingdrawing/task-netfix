@@ -32,6 +32,9 @@ def public_profile(request, username):
     user.field_of_work = convert_one_choice_to_verbose_name(user.field_of_work)
     history = None
     if user.field_of_work == 'CUSTOMER':
+        # at the moment this never fires with normal site usage,
+        # because only the company has links to a public profile
+        # but for the emergency case, it can prevent potential issues
         history = Bookings.objects.filter(
             user=user).order_by('-booking_date')
     else:

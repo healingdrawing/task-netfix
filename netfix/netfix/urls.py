@@ -18,7 +18,9 @@ from django.contrib import admin
 from django.urls import include, path
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    # built-in admin panel, not used at the moment.
+    # Allows to manipulate with models in built-in admin panel
+    # path('admin/', admin.site.urls), # uncomment to use admin panel
     path('', include('base.urls')),
     path('profile/', include('userpage.urls')),
     path('services/', include('service.urls')),

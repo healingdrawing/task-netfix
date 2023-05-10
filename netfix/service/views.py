@@ -22,7 +22,7 @@ def add_service(request):
             service.save()
             # no need send any data f.e. {'user': request.user, 'history': history}
             # because it calls profile view, instead of just rendering profile.html
-            # but you can send data , like second redirect argument in curve brackets(dict)
+            # but you can send data , like second argument of "redirect" in curve brackets(dict)
             return redirect(reverse('profile'))
     else:
         form = ServiceForm(user=request.user)
@@ -31,15 +31,15 @@ def add_service(request):
 
 def service_view(request, service_id):
     service = Service.objects.get(id=service_id)
-    # bull shit, but i do not want to implement new method
+    # facepalm, but i do not want implement a new method, for one call
     service = convert_services_choices_to_verbose_names([service])[0]
     context = {'service': service, 'user': request.user}
     return render(request, 'one_service.html', context)
 
 
 def service_list_view(request):
-    # todo: remaster to list of services by number of bookings
-    # services = Service.objects.filter().order_by('-created_date')
+    # list of services sorted by number of bookings, first the most popular.
+    # For the same number of bookings, sorting by latest booking first.
     services = Service.objects.annotate(
         num_bookings=Count('bookings'),
         latest_booking_date=Max('bookings__booking_date')

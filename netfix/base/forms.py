@@ -22,17 +22,22 @@ ACTIVITY_CHOICES_FORM = [
 
 
 class CompanyCreationForm(UserCreationForm):
+    # add new unique fields to built-in UserCreationForm
     email = forms.EmailField(required=True)
     field_of_work = forms.ChoiceField(
         required=True, choices=ACTIVITY_CHOICES_FORM, initial='ALL_IN_ONE')
 
     class Meta:
+        # this model will be used to create the form based on fields of model
         model = Kastrat
+        # these fields will be shown in the form.
+        # The names must be the same as names of fields in model
         fields = ('username', 'email', 'field_of_work',
                   'password1', 'password2')
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        # set autofocus on username field when page is loaded
         self.fields['username'].widget.attrs.update({'autofocus': 'autofocus'})
 
     def clean_username(self):
@@ -51,8 +56,10 @@ class CompanyCreationForm(UserCreationForm):
         company = super().save(commit=False)
         company.email = self.cleaned_data['email']
         company.field_of_work = self.cleaned_data['field_of_work']
+        # fill the field which is required but not shown in the form
         company.date_of_birth = timezone.now()
         if commit:
+            # save the data in the form to the database happens here
             company.save()
         return company
 
