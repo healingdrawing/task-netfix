@@ -5,6 +5,7 @@ from .models import Service
 class ServiceForm(ModelForm):
     class Meta:
         model = Service
+        # the field company_username is excluded from the form, but present in the model Service
         exclude = ['company_username']
         fields = ['name', 'description', 'field', 'price_per_hour']
 

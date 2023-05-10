@@ -1,4 +1,3 @@
-{% comment %} the item is booking {% endcomment %}
 <div class="card">
   <p>company: <a href="{% url 'public_profile' item.service.company_username.username %}">{{ item.service.company_username.username|slice:":98"|truncatechars:100 }} </a> </p>
 <p>field of work: {{ item.service.company_username.field_of_work }}</p>
@@ -9,3 +8,4 @@
 <p>booking date: {{ item.booking_date }}</p>
 <a href="{% url 'one_service' item.service.id %}">View Details</a>
 </div>
+{% comment %} the item here is booking {% endcomment %}

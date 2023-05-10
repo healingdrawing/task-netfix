@@ -1,6 +1,6 @@
 {% extends 'index.html' %}
 {% block content %}
-<h1>Register new company:</h1>
+<h1>Register new company</h1>
 <form action="/register_company/" method="POST">
   {% csrf_token %} {{form.as_p}}
   <input type="submit" value="Register" />

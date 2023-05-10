@@ -9,6 +9,16 @@
     <link href="{% static 'css/style.css' %}" rel="stylesheet" />
   </head>
   <body>
-    {% include "navbar.html" %} {% block content %} homepage {% endblock content %}
+    {% comment %}
+    Just includes "navbar.html" functionality, with user parameters checking etc.
+    So you need provide "user" object to all templates that include the "navbar.html"
+    {% endcomment %}
+    {% include "navbar.html" %}
+    {% block content %}
+    {% comment %}
+    In case of correct rendering, "homepage" text generally replaced by desirable data
+    {% endcomment %}
+    homepage
+    {% endblock content %}
   </body>
 </html>
