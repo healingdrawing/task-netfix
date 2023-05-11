@@ -10,7 +10,7 @@ After some manipulations, project template from "professionals" became able to s
 Few hours later was decided to drop this shit into the trash, and recreate project, because of:
 
 - masterpiece design based eye bleeding (red/yellow/gray palette, the hammer and spanner on logo for web application with "painting" or "gardening" services)
-- usage of three classes(the built-in `User`, and two extended) to manage users, when it enough to use just one extended from `AbstractUser` (admin is not required, so it also the reason to cut some not safe, methods)
+- usage of three classes(the built-in `User`, and two extended) to manage users, when it enough to use just one extended from `AbstractUser` (admin is not required, so it also the reason to cut some not safe methods)
 - synthetically generated "errors", which can happens naturally only under the heavy drugs, which also can raise some thinks 🤔
 
 Look at this z01 masterpiece, carefully... this is full code of file from the template they are provide to clients. The hardcoded list of choices(tuple of tuples) is just a full success.
