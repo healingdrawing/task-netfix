@@ -1,0 +1,21 @@
+{% extends 'index.html' %} {% block content %}
+{% comment %}
+Will add functionality of "index.html" template with nesting "navbar.html" template.
+Inside "navbar.html" there is checking if user is authenticated or not.
+Looks like Django, inside the view function(service/views.py add_service),
+pass the "user" object to the template automatically,
+even if it is not a context variable property(like "form" in this case).
+{% endcomment %}
+<h1>Add Service</h1>
+<form action="{% url 'add_service' %}" method="post">
+  {% comment %}
+  Template redered on server side. csrf token will be injected in the form.
+  The "form.as_p" will render the form elements as a paragraphs.
+  To render every form element separately with some it is possible to use "form.field_name".
+  F.e. "form.name" , "form.description". Names must be equal with form fields(model fields) names.
+  {% endcomment %}
+  {% csrf_token %}
+  {{ form.as_p }}
+    <input type="submit" value="Create">
+</form>
+{% endblock %}

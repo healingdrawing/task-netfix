@@ -1,0 +1,33 @@
+{% extends 'index.html' %} {% block content %}
+<h1>Public Profile Page</h1>
+<p>Company: {{ public_user.username|slice:":98"|truncatechars:100 }}</p>
+<p>Email: {{ public_user.email }}</p>
+<p>Activity: {{ public_user.field_of_work }}</p>
+<p>Date: {{ public_user.date_of_birth }}</p>
+<hr>
+
+{% if public_user.field_of_work == "CUSTOMER" %}
+{% comment %}
+At the moment not implemented call of this section.
+According to task, only company name click on service card
+should display the full list of services created by the company.
+Just an artefact, which can be extended in future. or not :)
+{% endcomment %}
+<h2>Booked services:</h2>
+<hr>
+
+{% for item in history %}
+{% include 'one_booking_card.html' %}
+{% endfor %}
+
+{% else %}
+
+<h2>Created services:</h2>
+<hr>
+
+{% for item in history %}
+{% include 'one_service_card.html' %}
+{% endfor %}
+
+{% endif %}
+{% endblock %}

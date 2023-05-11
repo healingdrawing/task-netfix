@@ -1,0 +1,15 @@
+{% extends 'index.html' %} {% block content %}
+<h1>Services filtered descending order by number of bookings</h1>
+{% for service in services %}
+
+<div class="card">
+    <p>service: {{ service.name|slice:":98"|truncatechars:100 }}</p>
+    <p>description: {{ service.description|slice:":298"|truncatechars:300 }}</p>
+    <p>price(goldens per hour): {{ service.price_per_hour }}</p>
+    <p>field: {{ service.field }}</p>
+    <a href="{% url 'one_service' service.id %}">View Details</a>
+</div>
+
+{% endfor %}
+
+{% endblock %}

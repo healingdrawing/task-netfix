@@ -1,0 +1,41 @@
+{% extends 'index.html' %} {% block content %}
+<h1>Profile Page</h1>
+{% if user.field_of_work == 'CUSTOMER' %}
+<p>Name: {{ user.username|slice:":98"|truncatechars:100 }}</p>
+<p>Email: {{ user.email }}</p>
+<p>Activity: {{ user.field_of_work }}</p>
+<p>Date of birth: {{ user.date_of_birth }}</p>
+{% else %}
+<p>Company: {{ user.username|slice:":98"|truncatechars:100 }}</p>
+<p>Email: {{ user.email }}</p>
+<p>Activity: {{ user.field_of_work }}</p>
+<p>Date of registration: {{ user.date_of_birth }}</p>
+{% endif %}
+
+<hr>
+
+{% if user.field_of_work == "CUSTOMER" %}
+
+<h2>Booked services:</h2>
+<hr>
+
+{% for item in history %}
+{% include 'one_booking_card.html' %}
+{% endfor %}
+
+{% else %}
+
+<form action="{% url 'add_service' %}" method="post">
+  {% csrf_token %}
+<input type="submit" value="Add a service" />
+</form>
+<hr>
+<h2>Created services:</h2>
+<hr>
+
+{% for item in history %}
+{% include 'one_service_card.html' %}
+{% endfor %}
+
+{% endif %}
+{% endblock %}

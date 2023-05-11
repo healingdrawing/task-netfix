@@ -1,0 +1,25 @@
+{% extends 'index.html' %} {% block content %}
+<h1>One Service Page</h1>
+{% comment %}
+The "service.company_username.username" will be the view function incoming argument.
+Fot this path "path('<str:username>', views.public_profile, name='public_profile'),"
+the "service.company_username.username" will be parsed as string type argument "username"
+for the view function "def public_profile(request, username):"
+{% endcomment %}
+<p>company: <a href="{% url 'public_profile' service.company_username.username %}">{{ service.company_username.username|slice:":98"|truncatechars:100 }} </a> </p>
+<p>field of work: {{ service.company_username.field_of_work }}</p>
+<hr>
+<p>service: {{ service.name|slice:":98"|truncatechars:100 }}</p>
+<p>field: {{ service.field }}</p>
+<p>description: {{ service.description|slice:":298"|truncatechars:300 }}</p>
+<p>price(goldens per hour): {{ service.price_per_hour }}</p>
+<p>date of creation: {{ service.created_date }}</p>
+
+{% if user.is_authenticated %}
+<form action="{% url 'book_service' service_id=service.id %}" method="post">
+  {% csrf_token %}
+    <input type="submit" value="Book">
+</form>
+{% endif %}
+
+{% endblock %}

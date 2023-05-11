@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>task Netfix</title>
+    <link rel="icon" type="image/svg+xml" href="{% static 'favicon.svg' %}">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+  </head>
+  <body>
+    {% comment %}
+    Just includes "navbar.html" functionality, with user parameters checking etc.
+    So you need provide "user" object to all templates that include the "navbar.html"
+    {% endcomment %}
+    {% include "navbar.html" %}
+    {% block content %}
+    {% comment %}
+    In case of correct rendering, "homepage" text generally replaced by desirable data
+    {% endcomment %}
+    homepage
+    {% endblock content %}
+  </body>
+</html>
