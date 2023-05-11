@@ -13,7 +13,7 @@ Few hours later was decided to drop this shit into the trash, and recreate proje
 - usage of three classes(the built-in `User`, and two extended) to manage users, when it enough to use just one extended from `AbstractUser` (admin is not required, so it also the reason to cut some not safe methods)
 - synthetically generated "errors", which can happens naturally only under the heavy drugs, which also can raise some thinks 🤔
 
-Look at this z01 masterpiece, carefully... this is full code of file from the template they provide to clients. The hardcoded list of choices(tuple of tuples) is just a full success.
+Look at this 01-edu masterpiece, carefully... this is full code of file from not completed project they provide to clients. The hardcoded list of choices(tuple of tuples) is just a full success.
 
 ```python
 
