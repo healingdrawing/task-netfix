@@ -1,12 +1,13 @@
 body {
-  background: hsl(240, 10%, 20%);
+  /* background: hsl(240, 10%, 20%); */
+  background: hsl(180, 25%, 15%);
   color: hsl(120, 20%, 60%);
 }
 
 hr {
   border-color: hsl(120, 20%, 60%);
   height: 2px;
-  background: black;
+  background: hsl(180, 25%, 15%);
 }
 
 a:link,
