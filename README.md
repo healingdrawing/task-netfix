@@ -4,7 +4,7 @@
 
 ## description
 
-https://01.gritlab.ax/git/root/public/src/branch/master/subjects/netfix#netfix
+https://github.com/01-edu/public/tree/master/subjects/netfix
 
 After some manipulations, project template from "professionals" became able to show some pages.  
 Few hours later was decided to drop this shit into the trash, and recreate project, because of:
